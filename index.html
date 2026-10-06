@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wii Menu Tribute</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="status-bar">
+        <div>Wii Menu</div>
+        <div class="time" id="clock">12:00 PM</div>
+        <div>Mon 12/17</div>
+      </header>
+      <section class="channel-grid">
+        <a class="channel-tile" href="channels/mii-channel.html">
+          <div>
+            <div class="channel-icon">Mii</div>
+            <div class="channel-label">Mii Channel</div>
+          </div>
+          <div class="channel-note">Create &amp; edit Miis</div>
+        </a>
+        <a class="channel-tile" href="channels/photo-channel.html">
+          <div>
+            <div class="channel-icon">📷</div>
+            <div class="channel-label">Photo Channel</div>
+          </div>
+          <div class="channel-note">View your snapshots</div>
+        </a>
+        <a class="channel-tile" href="channels/forecast-channel.html">
+          <div>
+            <div class="channel-icon">☀️</div>
+            <div class="channel-label">Forecast Channel</div>
+          </div>
+          <div class="channel-note">Today's weather</div>
+        </a>
+        <a class="channel-tile" href="channels/news-channel.html">
+          <div>
+            <div class="channel-icon">📰</div>
+            <div class="channel-label">News Channel</div>
+          </div>
+          <div class="channel-note">Headlines worldwide</div>
+        </a>
+        <a class="channel-tile" href="channels/internet-channel.html">
+          <div>
+            <div class="channel-icon">☁️</div>
+            <div class="channel-label">Internet Channel</div>
+          </div>
+          <div class="channel-note">Trial Version</div>
+        </a>
+        <a class="channel-tile" href="channels/virtual-console.html">
+          <div>
+            <div class="channel-icon">🎮</div>
+            <div class="channel-label">Virtual Console</div>
+          </div>
+          <div class="channel-note">Super Mario World</div>
+        </a>
+        <a class="channel-tile" href="channels/eshop-channel.html">
+          <div>
+            <div class="channel-icon">✉️</div>
+            <div class="channel-label">Wii Shop Channel</div>
+          </div>
+          <div class="channel-note">Shop, download &amp; play</div>
+        </a>
+        <a class="channel-tile" href="channels/check-mii-out.html">
+          <div>
+            <div class="channel-icon">⭐</div>
+            <div class="channel-label">Check Mii Out</div>
+          </div>
+          <div class="channel-note">Mii Parade</div>
+        </a>
+        <a class="channel-tile" href="channels/everybody-votes.html">
+          <div>
+            <div class="channel-icon">🗳️</div>
+            <div class="channel-label">Everybody Votes</div>
+          </div>
+          <div class="channel-note">Make your pick</div>
+        </a>
+        <a class="channel-tile" href="channels/disc-channel.html">
+          <div>
+            <div class="channel-icon">💿</div>
+            <div class="channel-label">Disc Channel</div>
+          </div>
+          <div class="channel-note">Insert Game Disc</div>
+        </a>
+        <a class="channel-tile" href="channels/message-board.html">
+          <div>
+            <div class="channel-icon">💌</div>
+            <div class="channel-label">Message Board</div>
+          </div>
+          <div class="channel-note">Family board</div>
+        </a>
+        <a class="channel-tile" href="channels/settings.html">
+          <div>
+            <div class="channel-icon">⚙️</div>
+            <div class="channel-label">Wii Options</div>
+          </div>
+          <div class="channel-note">Adjust your console</div>
+        </a>
+      </section>
+      <footer class="bottom-bar">
+        <a class="bottom-button" href="#">
+          <div class="indicator"></div>
+          Wii
+        </a>
+        <div class="time">12:29 PM</div>
+        <a class="bottom-button" href="#">
+          <div class="mail-indicator"></div>
+          Message Board
+        </a>
+      </footer>
+    </main>
+    <script>
+      const clockEl = document.getElementById("clock");
+      const timeEl = document.querySelector(".bottom-bar .time");
+      function updateClock() {
+        const now = new Date();
+        const options = {
+          hour: "numeric",
+          minute: "2-digit",
+        };
+        const timeString = now.toLocaleTimeString([], options);
+        clockEl.textContent = timeString;
+        timeEl.textContent = timeString;
+      }
+      updateClock();
+      setInterval(updateClock, 1000 * 30);
+    </script>
+  </body>
+</html>
