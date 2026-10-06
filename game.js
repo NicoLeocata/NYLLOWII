@@ -1,5 +1,5 @@
 const channel = new URLSearchParams(location.search).get('channel');
-const names = {'disc-channel':'Disc Channel','mii-channel':'Mii Channel','photo-channel':'Photo Channel','eshop-channel':'Wii Shop Channel','forecast-channel':'Forecast Channel','news-channel':'News Channel','internet-channel':'Internet Channel','virtual-console':'Virtual Console','check-mii-out':'Check Mii Out','everybody-votes':'Everybody Votes','message-board':'Message Board','settings':'Wii Options'};
+const names = {"disc-channel": "A la Marcheta", "mii-channel": "Absolut Relax", "photo-channel": "Visions", "eshop-channel": "Album Covers", "forecast-channel": "Look Around", "news-channel": "Los Angeles Times", "internet-channel": "The Imperfect Issue", "virtual-console": "Parque Pari", "check-mii-out": "Sin City", "everybody-votes": "Casa del Libro", "message-board": "Sin Conexión", "settings": "Volados", "nova": "Nova Goggles", "pepsi-prime": "Pepsi × Prime Video", "book-covers": "Book Covers", "brizna": "Quilmes Brizna", "social-media": "Social Media"};
 if (Object.hasOwn(names, channel)) {
   document.getElementById('title').textContent = names[channel] + ' · Pointer Challenge';
   document.getElementById('back').href = 'channels/' + channel + '.html';
