@@ -1,6 +1,6 @@
-:root { --blue: #ffffff; color-scheme: dark; --ink: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--ink); background: #101010; }
+:root { --wii-cursor: url('assets/Wii Cursor Large.cur') 16 4, url('assets/Wii Cursor.cur') 8 2, pointer; --blue: #ffffff; color-scheme: dark; --ink: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; color: var(--ink); background: #101010; }
 * { box-sizing: border-box; cursor: inherit; }
-body { margin: 0; min-height: 100svh; cursor: url('assets/Wii Cursor Large.cur'), pointer; background: repeating-linear-gradient(0deg, #141414 0px, #141414 2px, #111111 3px, #111111 4px); }
+body { margin: 0; min-height: 100svh; cursor: var(--wii-cursor); background: repeating-linear-gradient(0deg, #141414 0px, #141414 2px, #111111 3px, #111111 4px); }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
 .console { min-height: 100svh; display: flex; flex-direction: column; padding-top: clamp(28px, 6vh, 65px); position: relative; overflow: hidden; }
@@ -131,3 +131,86 @@ button { font: inherit; color: inherit; }
 .channel-tile.internet { --cover-position: 50% 40%; }
 .channel-tile.retro { --cover-position: 50% 48%; }
 .channel-tile.mail { --cover-position: 50% 52%; }
+
+.homepage-header {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 0 24px 24px;
+}
+.homepage-title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 700;
+  letter-spacing: .14em;
+  line-height: 1.1;
+}
+
+/* Keep both menu pages inside the same viewport-sized console. */
+body.homepage {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+.homepage .console {
+  height: 100%;
+  min-height: 0;
+  padding-top: clamp(8px, 3dvh, 32px);
+}
+.homepage-header { padding-bottom: clamp(8px, 2dvh, 24px); }
+.homepage-title { font-size: clamp(24px, 6dvh, 60px); }
+.channel-pages {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding-bottom: 0;
+}
+.channel-track { height: 100%; }
+.channel-track .channel-grid {
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-content: stretch;
+  gap: clamp(6px, 2dvh, 20px);
+  padding-top: 8px;
+  padding-bottom: clamp(28px, 5dvh, 44px);
+}
+.channel-track .channel-tile { min-width: 0; min-height: 0; aspect-ratio: auto; }
+.page-dots { position: absolute; bottom: 12px; left: 0; right: 0; }
+.homepage .bottom-bar { height: clamp(64px, 17dvh, 145px); }
+.homepage .round-button { height: clamp(38px, 10dvh, 76px); width: clamp(70px, 17dvh, 132px); }
+.homepage .footer-icon { max-height: 55%; max-width: 55%; }
+.homepage #clock { font-size: clamp(18px, 5dvh, 48px); }
+.homepage #date { font-size: clamp(12px, 2.5dvh, 21px); }
+.homepage .console-brand { font-size: clamp(10px, 2dvh, 20px); }
+@media (max-width: 600px) {
+  .channel-track .channel-grid { grid-template-rows: repeat(6, minmax(0, 1fr)); gap: clamp(4px, 1.3dvh, 14px); }
+  .channel-tile { border-radius: 12px; border-width: 2px; }
+  .channel-picture { border-radius: 10px; }
+}
+
+.page-arrow,
+.page-arrow:hover,
+.page-arrow:focus-visible,
+.page-arrow:active {
+  cursor: var(--wii-cursor);
+}
+
+/* Apply the cursor directly to controls as well as their children. */
+html, body, body *, body *::before, body *::after {
+  cursor: var(--wii-cursor) !important;
+}
+/* Leave room for the 64px cursor at the right viewport edge. Browsers
+   can fall back to a system cursor when a custom cursor crosses it. */
+.next-page { right: 52px; }
+.channel-track .channel-grid {
+  padding-right: max(104px, 6vw, calc((100vw - 1100px) / 2));
+  padding-left: max(104px, 6vw, calc((100vw - 1100px) / 2));
+}
+.previous-page { left: 52px; }
+@media (max-width: 600px) {
+  .next-page { right: 52px; }
+  .previous-page { left: 8px; }
+  .channel-track .channel-grid { padding-left: 42px; padding-right: 90px; }
+}
